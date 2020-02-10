@@ -16,13 +16,22 @@
 
   <p>Hello, world! Test</p>
     
-   <script type = "text/javascript">   
-    fetch("http://www.omdbapi.com/?s=harry potter&apikey=adf1f2d7")
-    .then(response => response.json())
-    .then((data) => {
-    console.log(data);
-    });
+   <script>   
      
+     <ul id="results"></ul>
+const results = document.querySelector("#results");
+
+fetch("http://www.omdbapi.com/?s=harry potter&apikey=adf1f2d7")
+  .then(response => response.json())
+  .then((data) => {
+    data.Search.forEach((result) => {
+      const movie = `<li class="list-inline-item">
+        <img src="${result.Poster}" alt="">
+        <p>${result.Title}</p>
+      </li>`;
+      results.insertAdjacentHTML("beforeend", movie);
+    });
+  });
    </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
