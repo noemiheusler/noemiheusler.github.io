@@ -3,14 +3,16 @@ Hello World
 
 <p id="demo"></p>
 <script>
-    console.log('TEST')
-    var request = new XMLHttpRequest()  
-    request.onload = function() {
-        var data = JSON.parse(this.response)
-        data.forEach(tram => { console.log(tram)})
-    }
-request.open('GET', 'http://transport.opendata.ch/v1/stationboard?station=Wallisellen,%20Neugut&limit=10', true);
-request.send();
+    console.log('TEST');
+    
+    var request = new XMLHttpRequest();
+    
+    request.onload = function() { console.log('TEST')}
+    request.open('GET', 'http://transport.opendata.ch/v1/stationboard?station=Wallisellen,%20Neugut&limit=10', true);
+    request.send();
+    
 </script>
 
+function() {
+            if (this.readyState
 
