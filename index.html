@@ -3,10 +3,8 @@ Hello World
 
 <p id="demo"></p>
 <script>
-    var request = new XMLHttpRequest()
-
     console.log('TEST')
-    
+    var request = new XMLHttpRequest()  
     request.onload = function() {
         var data = JSON.parse(this.response)
         data.forEach(tram => { console.log(tram)})
