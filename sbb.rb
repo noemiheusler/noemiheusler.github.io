@@ -5,7 +5,7 @@ request.onload = function() {
   var data = JSON.parse(this.response)
   
    data.forEach(tram => {
-      console.log(stationboard.to)
+      console.log(tram)
     }
   }
   
