@@ -1,8 +1,22 @@
-Hello World
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<p id="demo"></p>
-<script>
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <p>Hello, world!</p>
+    
+   <script type = "text/javascript">   
     console.log('TEST');
     
     var request = new XMLHttpRequest();
@@ -10,5 +24,10 @@ Hello World
     request.onload = function() { console.log('TEST')}
     request.open('GET', 'http://transport.opendata.ch/v1/stationboard?station=Wallisellen,%20Neugut&limit=10', true);
     request.send();
-    
-</script>
+   </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
