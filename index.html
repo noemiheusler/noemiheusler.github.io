@@ -17,13 +17,12 @@
   <p>Hello, world! Test</p>
     
    <script type = "text/javascript">   
-    console.log('TEST');
-    
-    var request = new XMLHttpRequest();
-    
-    request.onload = function() { console.log('TEST')}
-    request.open('GET', 'http://transport.opendata.ch/v1/stationboard?station=Wallisellen,%20Neugut&limit=10', true);
-    request.send();
+    fetch("http://www.omdbapi.com/?s=harry potter&apikey=adf1f2d7")
+    .then(response => response.json())
+    .then((data) => {
+    console.log(data);
+    });
+     
    </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
