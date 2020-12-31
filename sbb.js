@@ -1,10 +1,9 @@
 const departureHome = () => {
   const url = "https://transport.opendata.ch/v1/stationboard?station=Wallisellen,Neugut&limit=10"
-  const datum = new Date()
-  const hours = datum.getHours()
-  const minutes = datum.getMinutes()
+  const hours = new Date().getHours()
+  const minutes = new Date().getMinutes()
 
-  console.log (`TEST`)
+  console.log (`TEST2`)
 
   const minutes_layouted = () => {
     if (minutes < 10) {
@@ -30,11 +29,12 @@ const departureHome = () => {
         abfahrt = new Date(station.stop.departure)
         today = new Date()
         zeit = Math.round(Math.abs(today - abfahrt) / 60000)
+        zeit_string = zeit.toString()
         if (zeit < 6) {
-          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">${zeit} min</td></tr`
+          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">${zeit_string} min</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
         } else {
-          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td>${zeit} min</td></tr`
+          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td>${zeit_string} min</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
         }
       });
