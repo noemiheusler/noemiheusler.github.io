@@ -1,7 +1,18 @@
 const departureHome = () => {
-  const url = "http://transport.opendata.ch/v1/stationboard?station=Wallisellen,Neugut&limit=10"
-  const hours = new Date().getHours()
-  const minutes = new Date().getMinutes()
+  const url = "https://transport.opendata.ch/v1/stationboard?station=Wallisellen,Neugut&limit=10"
+  const datum = new Date()
+  const hours = datum.getHours()
+  const minutes = datum.getMinutes()
+
+  console.log (`TEST`)
+
+  const minutes_layouted = () => {
+    if (minutes < 10) {
+      minutes_layouted = `0${minutes}`
+    } else {
+      minutes_layouted = minutes
+    }
+  }
 
   const h2 = document.querySelector("h2");
   h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}`)
