@@ -1,7 +1,7 @@
 h1 {
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 20px;
+  margin-left: 200px;
   font-size: 30px;
 }
 
@@ -16,6 +16,7 @@ h2 {
 body {
   background-color: #00157E;
   color: white;
+  font-size: 25px;
 }
 
 .table {
@@ -26,5 +27,3 @@ body {
   color: #FFBB33;
   font-weight: bold;
 }
-
-
