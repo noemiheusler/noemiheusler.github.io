@@ -20,8 +20,8 @@ const departureHome = () => {
   
   let today = new Date().getTime();
 
-  let hours = new Date(today).getHours();
-  let minutes = new Date(today).getMinutes();
+  let hours = new Date().getHours();
+  let minutes = new Date().getMinutes();
 
   const h2 = document.querySelector("h2");
   h2.innerHTML = '';
