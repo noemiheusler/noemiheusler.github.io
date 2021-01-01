@@ -47,7 +47,7 @@ const departureHome = () => {
         //abfahrt = new Date(station.stop.departure).getTime();
         abfahrt = Date.parse('2021-01-01T18:30:00+0100');
         //console.log(abfahrt);
-        bisAbfahrt = ((today-abfahrt)/(1000*60)).toFixed();
+        bisAbfahrt = ((abfahrt-today)/(1000*60)).toFixed();
         if (bisAbfahrt <= 0) {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">Zu spät</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
