@@ -48,7 +48,6 @@ const departureHome = () => {
         abfahrt = Date.parse('2021-01-01T17:21:00+0100');
         //abfahrt = new Date(station.stop.departure).getTime();
         console.log(abfahrt);
-        console.log(abfahrt.slice(0, -4));
         bisAbfahrt = ((abfahrt - today)/(1000*60)).toFixed();
         if (bisAbfahrt <= 0) {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">Zu spät</td></tr`
