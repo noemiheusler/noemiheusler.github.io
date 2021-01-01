@@ -20,20 +20,18 @@ const departureHome = () => {
   
   let today = new Date().getTime();
 
-  console.log(today);
-
-  //let hours = today.getHours().toString().parseInt();
-  //let minutes = today.getMinutes().toString().parseInt();
+  let hours = today.getHours();
+  let minutes = today.getMinutes();
 
   const h2 = document.querySelector("h2");
   h2.innerHTML = '';
 
 
-//  if (minutes < 10) {
-//    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}`)
-//  } else {
-//    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}`)
-//  }
+  if (minutes < 10) {
+    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}`)
+  } else {
+    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}`)
+  }
 
   const tbody = document.querySelector("tbody");
   tbody.innerHTML = '';
@@ -46,6 +44,7 @@ const departureHome = () => {
       stationboard.forEach((station) => {
         ziel = station.to
         //abfahrt = new Date(station.stop.departure).getTime();
+        console.log(station.stop.departure);
         abfahrt = new Date().getTime();
         bisAbfahrt = ((abfahrt - today)/(1000*60)).toFixed();
         if (bisAbfahrt <= 0) {
