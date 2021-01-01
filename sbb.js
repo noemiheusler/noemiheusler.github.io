@@ -22,15 +22,14 @@ const departureHome = () => {
         ziel = station.to
         abfahrt = new Date(station.stop.departure)
         abfahrt.toISOString().substring(0, 10)
-        zeit = Math.round(Math.abs(today - abfahrt) / 60000)
-        zeit_string = zeit.toString()
-        if (zeit < 6) {
-          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">${zeit_string} min</td></tr`
-          tbody.insertAdjacentHTML("afterbegin", row)
-        } else {
-          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td>${zeit_string} min</td></tr`
-          tbody.insertAdjacentHTML("afterbegin", row)
-        }
+        bisAbfahrt = abfahrt.getTime() - today.getTime()
+        //if (zeit < 6) {
+        row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">${bisAbfahrt} min</td></tr`
+        tbody.insertAdjacentHTML("afterbegin", row)
+        //} else {
+        //  row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td>${bisAbfahrt} min</td></tr`
+        //  tbody.insertAdjacentHTML("afterbegin", row)
+        //}
       });
 
       const times = document.querySelectorAll(".time");
