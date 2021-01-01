@@ -45,10 +45,9 @@ const departureHome = () => {
       stationboard.forEach((station) => {
         ziel = station.to
         //abfahrt = new Date(station.stop.departure).getTime();
-        abfahrt = station.stop.departureTimestamp;
-        //abfahrt = new Date(station.stop.departure).getTime();
-        console.log(abfahrt);
-        bisAbfahrt = ((abfahrt - today)/(1000*60)).toFixed();
+        //abfahrt = Date.parse()
+        //console.log(abfahrt);
+        bisAbfahrt = (station.stop.departureTimestamp/(1000*60)).toFixed();
         if (bisAbfahrt <= 0) {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">Zu spät</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
