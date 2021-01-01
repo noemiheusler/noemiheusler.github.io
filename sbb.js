@@ -19,23 +19,22 @@ document.onkeydown = goFullscreen;
 const departureHome = () => {
   const url = "https://transport.opendata.ch/v1/stationboard?station=Wallisellen,Neugut&limit=10"
   
-  let today = new Date();
-  today.toISOString().substring(0, 10);
+  let today = new Date().getTime();
 
   console.log(today);
 
-  let hours = today.getHours();
-  let minutes = today.getMinutes();
+  //let hours = today.getHours();
+  //let minutes = today.getMinutes();
 
-  const h2 = document.querySelector("h2");
-  h2.innerHTML = '';
+  //const h2 = document.querySelector("h2");
+  //h2.innerHTML = '';
 
 
-  if (minutes < 10) {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}`)
-  } else {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}`)
-  }
+  //if (minutes < 10) {
+  //  h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}`)
+  //} else {
+  //  h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}`)
+  //}
 
   const tbody = document.querySelector("tbody");
   tbody.innerHTML = '';
@@ -47,10 +46,9 @@ const departureHome = () => {
 
       stationboard.forEach((station) => {
         ziel = station.to
-        abfahrt = new Date(station.stop.departure)
-        abfahrt.toISOString().substring(0, 10)
+        abfahrt = new Date(station.stop.departure).getTime();
 
-        bisAbfahrt = ((abfahrt.getTime() - today.getTime())/(1000*60)).toFixed();
+        bisAbfahrt = ((abfahrt - today))/(1000*60)).toFixed();
         if (bisAbfahrt <= 0) {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">zu spät</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
