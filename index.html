@@ -12,23 +12,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <script language="jscript">
-    function goFullscreen() {
-        // Must be called as a result of user interaction to work
-        mf = document.getElementById("main_frame");
-        mf.webkitRequestFullscreen();
-        mf.style.display="";
-    }
-    function fullscreenChanged() {
-        if (document.webkitFullscreenElement == null) {
-            mf = document.getElementById("main_frame");
-            mf.style.display="none";
-        }
-    }
-    document.onwebkitfullscreenchange = fullscreenChanged;
-    document.documentElement.onclick = goFullscreen;
-    document.onkeydown = goFullscreen;
-  </script>
+  <script src="sbb.js"> goFullscreen() </script>
 </head>
 
 <body style="margin:0">
