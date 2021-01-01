@@ -20,8 +20,8 @@ const departureHome = () => {
   
   let today = new Date().getTime();
 
-  let hours = today.getHours();
-  let minutes = today.getMinutes();
+  let hours = new Date(today).getHours();
+  let minutes = new Date(today).getMinutes();
 
   const h2 = document.querySelector("h2");
   h2.innerHTML = '';
@@ -45,18 +45,20 @@ const departureHome = () => {
         ziel = station.to
         //abfahrt = new Date(station.stop.departure).getTime();
         console.log(station.stop.departure);
-        abfahrt = new Date().getTime();
+        abfahrt = Date.parse(station.stop.departure);
+        //abfahrt = new Date(station.stop.departure).getTime();
+        console.log(abfahrt);
         bisAbfahrt = ((abfahrt - today)/(1000*60)).toFixed();
-        if (bisAbfahrt <= 0) {
-          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">zu spät</td></tr`
-          tbody.insertAdjacentHTML("afterbegin", row)
-        } else if (bisAbfahrt < 6) {
+//        if (bisAbfahrt <= 0) {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">${bisAbfahrt} min</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
-        } else {
-          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td>${bisAbfahrt} min</td></tr`
-          tbody.insertAdjacentHTML("afterbegin", row)
-        }
+//        } else if (bisAbfahrt < 6) {
+//          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">${bisAbfahrt} min</td></tr`
+//          tbody.insertAdjacentHTML("afterbegin", row)
+//        } else {
+//          row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td>${bisAbfahrt} min</td></tr`
+//          tbody.insertAdjacentHTML("afterbegin", row)
+//        }
       });
 
       const times = document.querySelectorAll(".time");
