@@ -40,9 +40,9 @@ const departureHome = () => {
 
 
   if (minutes < 10) {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}OSS${ver}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}OSSS${ver}`)
   } else {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}OSS${ver}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}OSSS${ver}`)
   }
 
   const tbody = document.querySelector("tbody");
@@ -56,7 +56,7 @@ const departureHome = () => {
       stationboard.forEach((station) => {
         ziel = station.to
         //abfahrt = new Date(station.stop.departure).getTime();
-        if (ver == `12,5,0`) {
+        if (ver.toString() == `12,5,0`) {
           abfahrt = Date.parse('2021-01-01T24:45:00');
           //console.log(abfahrt);
           bisAbfahrt = (((abfahrt-today)/(1000*60))-(60*60*1000)).toFixed();
