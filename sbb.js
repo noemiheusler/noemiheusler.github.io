@@ -51,7 +51,7 @@ const departureHome = () => {
         abfahrt.toISOString().substring(0, 10)
 
         bisAbfahrt = ((abfahrt.getTime() - today.getTime())/(1000*60)).toFixed();
-        if (bisAbfahrt < 0) {
+        if (bisAbfahrt <= 0) {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">zu spät</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
         } else if (bisAbfahrt < 6) {
