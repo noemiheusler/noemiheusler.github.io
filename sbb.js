@@ -44,7 +44,7 @@ const departureHome = () => {
       stationboard.forEach((station) => {
         ziel = station.to
         //abfahrt = new Date(station.stop.departure).getTime();
-        console.log(station.stop.departure);
+        console.log(station.stop.departure.slice(0, -4));
         abfahrt = Date.parse(station.stop.departure.slice(0, -4));
         //abfahrt = new Date(station.stop.departure).getTime();
         console.log(abfahrt);
