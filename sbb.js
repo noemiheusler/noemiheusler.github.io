@@ -1,17 +1,13 @@
 const departureHome = () => {
   const url = "https://transport.opendata.ch/v1/stationboard?station=Wallisellen,Neugut&limit=10"
-  const hours = new Date().getHours()
-  const minutes = new Date().getMinutes()
+  
+  let today = new Date();
+  today.toISOString().substring(0, 10);
 
-  console.log (`TEST2`)
+  console.log(today);
 
-  const minutes_layouted = () => {
-    if (minutes < 10) {
-      minutes_layouted = `0${minutes}`
-    } else {
-      minutes_layouted = minutes
-    }
-  }
+  let hours = today.getHours();
+  let minutes = today.getMinutes();
 
   const h2 = document.querySelector("h2");
   h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}`)
@@ -19,15 +15,13 @@ const departureHome = () => {
   fetch(url)
     .then(response => response.json())
     .then((data) => {
-      console.log(hours)
-      console.log(minutes)
       const stationboard = data.stationboard.reverse();
       const tbody = document.querySelector("tbody");
 
       stationboard.forEach((station) => {
         ziel = station.to
         abfahrt = new Date(station.stop.departure)
-        today = new Date()
+        abfahrt.toISOString().substring(0, 10)
         zeit = Math.round(Math.abs(today - abfahrt) / 60000)
         zeit_string = zeit.toString()
         if (zeit < 6) {
