@@ -86,6 +86,4 @@ const departureHome = () => {
     });
 };
 
-departureHome();
-
 window.setInterval(departureHome, 30000);
