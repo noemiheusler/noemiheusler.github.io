@@ -42,9 +42,9 @@ const departureHome = () => {
 
 
   if (minutes < 10) {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}VERSION${ver}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}VERSIONX${ver}`)
   } else {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}VERSION${ver}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}VERSIONX${ver}`)
   }
 
   const tbody = document.querySelector("tbody");
