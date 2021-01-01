@@ -40,9 +40,9 @@ const departureHome = () => {
 
 
   if (minutes < 10) {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes} Ver1: ${ver}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes} Ver2: ${ver}`)
   } else {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes} Ver1: ${ver}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes} Ver2: ${ver}`)
   }
 
   const tbody = document.querySelector("tbody");
@@ -63,6 +63,7 @@ const departureHome = () => {
           abfahrt = Date.parse(departure);
           //console.log(abfahrt);
           bisAbfahrt = ((abfahrt-today)/(1000*60)).toFixed();
+          bisAbfahrt = bisAbfahrt-60;
         } else {
           abfahrt = Date.parse(departure);
           //console.log(abfahrt);
