@@ -26,8 +26,6 @@ function iOSversion() {
 
 ver = iOSversion()
 
-console.log(ver);
-
 const departureHome = () => {
   const url = "https://transport.opendata.ch/v1/stationboard?station=Wallisellen,Neugut&limit=10"
   
@@ -42,9 +40,9 @@ const departureHome = () => {
 
 
   if (minutes < 10) {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}VERSIONX${ver}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}OS${ver}`)
   } else {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}VERSIONX${ver}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}OS${ver}`)
   }
 
   const tbody = document.querySelector("tbody");
@@ -58,7 +56,7 @@ const departureHome = () => {
       stationboard.forEach((station) => {
         ziel = station.to
         //abfahrt = new Date(station.stop.departure).getTime();
-        if (ver == "12,5,0") {
+        if (ver === "12,5,0") {
           abfahrt = Date.parse('2021-01-01T20:45:00');
           //console.log(abfahrt);
           bisAbfahrt = (((abfahrt-today)/(1000*60))-(60*60*1000)).toFixed();
@@ -67,7 +65,11 @@ const departureHome = () => {
           //console.log(abfahrt);
           bisAbfahrt = ((abfahrt-today)/(1000*60)).toFixed();
         }
-        
+
+        row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">${bisAbfahrt} min</td></tr`
+        tbody.insertAdjacentHTML("afterbegin", row)
+
+        /*
         if (bisAbfahrt <= 0) {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">Zu spät</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
@@ -77,7 +79,7 @@ const departureHome = () => {
         } else {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td>${bisAbfahrt} min</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
-        }
+        }*/
       });
 
       const times = document.querySelectorAll(".time");
