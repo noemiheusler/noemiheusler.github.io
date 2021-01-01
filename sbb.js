@@ -55,21 +55,20 @@ const departureHome = () => {
 
       stationboard.forEach((station) => {
         ziel = station.to
+        departure_raw = station.stop.departure
+        departure = departure_raw.slice(0, -5);
+        console.log(departure);
         //abfahrt = new Date(station.stop.departure).getTime();
         if (ver == `12,5,0`) {
-          abfahrt = Date.parse('2021-01-01T23:45:00');
+          abfahrt = Date.parse(departure);
           //console.log(abfahrt);
           bisAbfahrt = (((abfahrt-today)/(1000*60))-(60*60*1000)).toFixed();
         } else {
-          abfahrt = Date.parse('2021-01-01T18:45:00');
+          abfahrt = Date.parse(departure);
           //console.log(abfahrt);
           bisAbfahrt = ((abfahrt-today)/(1000*60)).toFixed();
         }
-
-        row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">${bisAbfahrt} min</td></tr`
-        tbody.insertAdjacentHTML("afterbegin", row)
-
-        /*
+        
         if (bisAbfahrt <= 0) {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">Zu spät</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
@@ -79,7 +78,7 @@ const departureHome = () => {
         } else {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td>${bisAbfahrt} min</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
-        }*/
+        }
       });
 
       const times = document.querySelectorAll(".time");
