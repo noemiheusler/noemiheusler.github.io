@@ -19,6 +19,7 @@ const departureHome = () => {
   const url = "https://transport.opendata.ch/v1/stationboard?station=Wallisellen,Neugut&limit=10"
   
   let today = new Date().getTime();
+  console.log(today);
 
   let hours = new Date().getHours();
   let minutes = new Date().getMinutes();
