@@ -4,6 +4,7 @@ function goFullscreen() {
   mf.webkitRequestFullscreen();
   mf.style.display="";
 }
+
 function fullscreenChanged() {
   if (document.webkitFullscreenElement == null) {
       mf = document.getElementById("main_frame");
@@ -14,6 +15,18 @@ function fullscreenChanged() {
 document.onwebkitfullscreenchange = fullscreenChanged;
 document.documentElement.onclick = goFullscreen;
 document.onkeydown = goFullscreen;
+
+function iOSversion() {
+  if (/iP(hone|od|ad)/.test(navigator.platform)) {
+    // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
+    var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+    return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+  }
+}
+
+ver = iOSversion()
+
+console.log(ver);
 
 const departureHome = () => {
   const url = "https://transport.opendata.ch/v1/stationboard?station=Wallisellen,Neugut&limit=10"
@@ -29,9 +42,9 @@ const departureHome = () => {
 
 
   if (minutes < 10) {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:0${minutes}VERSION${ver}`)
   } else {
-    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}`)
+    h2.insertAdjacentHTML("afterbegin", `${hours}:${minutes}VERSION${ver}`)
   }
 
   const tbody = document.querySelector("tbody");
@@ -45,9 +58,16 @@ const departureHome = () => {
       stationboard.forEach((station) => {
         ziel = station.to
         //abfahrt = new Date(station.stop.departure).getTime();
-        abfahrt = Date.parse('2021-01-01T18:45:00Z');
-        //console.log(abfahrt);
-        bisAbfahrt = ((abfahrt-today)/(1000*60)).toFixed();
+        if (ver < 13) {
+          abfahrt = Date.parse('2021-01-01T18:45:00');
+          //console.log(abfahrt);
+          bisAbfahrt = (((abfahrt-today)/(1000*60))-(60*60*1000)).toFixed();
+        } else {
+          abfahrt = Date.parse('2021-01-01T18:45:00');
+          //console.log(abfahrt);
+          bisAbfahrt = ((abfahrt-today)/(1000*60)).toFixed();
+        }
+        
         if (bisAbfahrt <= 0) {
           row = `<tr><th scope="row"></th><td>Linie 12</td><td>${ziel}</td><td class="time">Zu spät</td></tr`
           tbody.insertAdjacentHTML("afterbegin", row)
