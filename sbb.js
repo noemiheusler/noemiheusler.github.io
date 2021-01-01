@@ -45,7 +45,7 @@ const departureHome = () => {
         ziel = station.to
         //abfahrt = new Date(station.stop.departure).getTime();
         console.log(station.stop.departure);
-        abfahrt = Date.parse('2021-01-01 16:38:00+0100');
+        abfahrt = Date.parse('2021-01-01T16:38:00');
         //abfahrt = new Date(station.stop.departure).getTime();
         console.log(abfahrt);
         bisAbfahrt = ((abfahrt - today)/(1000*60)).toFixed();
